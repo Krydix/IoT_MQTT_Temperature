@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Live Temperature Display</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+    <h1>Current Temperature: <span id="temperature">N/A</span></h1>
+    <script>
+        function updateTemperature() {
+            $.get('/get_temperature', function(data) {
+                $('#temperature').text(data.temperature);
+            });
+        }
+        // Update temperature every 5 seconds
+        setInterval(updateTemperature, 1000);
+        // Initial update
+        updateTemperature();
+    </script>
+</body>
+</html>
